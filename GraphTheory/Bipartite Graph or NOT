@@ -1,0 +1,71 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> adj[1000];
+int visited[1000],clr[1000];
+bool DFS(int node,int c)
+{
+    visited[node] = 1;
+    clr[node] = c;
+    for(int child : adj[node])
+    {
+        if(visited[child]==0)
+        {
+            bool res = DFS(child,c^1);
+            if(res == false)
+                return false;
+        }
+        else
+        if(clr[node]==clr[child])
+        return false;
+    }
+    return true;
+}
+int main()
+{
+    int t;
+    int n,m;
+    cin>>t;
+
+    for(int tc = 1; tc<=t; tc++)
+    {
+
+        cin>>n>>m;
+        for (int i =1 ; i<=n; i++)
+        {
+            adj[i].clear();
+            visited[i]= 0;
+        }
+        int a,b;
+        for(int i=1; i<=m; i++)
+        {
+            cin>>a>>b;
+            adj[a].push_back(b);
+            adj[b].push_back(a);
+        }
+
+        bool flag = true ;
+
+        for(int i=1; i<=n; i++)
+        {
+            if(visited[i]==0)
+            {
+                bool res = DFS(i,0);
+                if(res == false)
+                    flag = false;
+            }
+
+        }
+
+        cout<<"Scenario #"<<tc<<":"<<endl;
+        if(flag == false)
+            cout<<"Suspicious bugs found!"<<endl;
+        else
+            cout<<"No suspicious bugs found!"<<endl;
+
+
+    }
+    return 0;
+}
+
+/* problem Link */
+// https://www.spoj.com/problems/BUGLIFE/
