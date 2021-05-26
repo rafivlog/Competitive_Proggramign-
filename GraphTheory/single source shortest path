@@ -1,0 +1,53 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define INF 1000000000
+vector<int> adj[1000000];
+int visited[1000000],dist[1000000];
+void DFS(int node,int d)
+{
+    visited[node] = 1;
+    dist[node] = d;
+    for(int child : adj[node])
+    {
+        if(!visited[child])
+        {
+            DFS(child,dist[node]+1);
+        }
+    }
+}
+int main()
+{
+    int n,m,a,b; // single source shortest path
+    cin>>n;
+    n--;
+    while(n--)
+    {
+        cin>>a>>b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    DFS(1,0);
+    int q,ans = -1, min_dist  = INF ;
+    cin>>q;
+    while(q--)
+    {
+        int girl_city;
+        cin>>girl_city;
+        if(dist[girl_city]<min_dist)
+        {
+            min_dist = dist[girl_city];
+            ans = girl_city;
+        }
+        else
+        {
+            if(dist[girl_city] == min_dist && girl_city < ans)\
+                ans = girl_city;
+        }
+
+
+    }
+    cout<<ans<<endl;
+
+    return 0;
+}
+// 
