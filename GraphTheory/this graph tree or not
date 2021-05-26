@@ -1,0 +1,43 @@
+#include<bits/stdc++.h>
+using namespace std;
+vector<int> adj[10001];
+int visited[10001];
+void DFS(int node)
+{
+    visited[node] = 1;
+    for(int child : adj[node])
+    {
+        if(visited[child]==0)
+        {
+            DFS(child);
+        }
+    }
+}
+int main()
+{
+    int n,m,a,b;
+    cin>>n>>m;
+    for(int i=1;i<=m;i++)
+    {
+        cin>>a>>b;
+        adj[a].push_back(b);
+        adj[b].push_back(a);
+    }
+    int c =0 ;
+    for(int i=1;i<=n;i++)
+    {
+        if(visited[i]==0)
+        {
+            DFS(i);
+            c++;
+        }
+    }
+    cout<<c<<endl;
+    if(c==1 && m == n-1)
+        cout<<"YES"<<endl;
+    else
+        cout<<"NO"<<endl;
+    return 0;
+}
+
+//  https://www.spoj.com/problems/PT07Y/
