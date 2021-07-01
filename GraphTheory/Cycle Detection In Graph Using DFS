@@ -1,0 +1,15 @@
+bool DFS(int node,int par)
+{
+    visited[node] = 1;
+    for(int child : adj[node])
+    {
+        if(visited[child]==0)
+        {
+            if(DFS(child,node)==true)
+                return true;
+        }
+        else if(child!=par)
+            return true;
+    }
+    return false;
+}
