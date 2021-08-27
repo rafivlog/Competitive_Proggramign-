@@ -1,0 +1,101 @@
+/********************************************************************************************************\__
+ 
+        author  : Mohammad Rahatul Islam   ||    email   :    rahatuljp2018@gmail.com                              ||
+        Dept. of CSE, IIUC , Bangladesh.                                                    ||
+                                                                                                          ||
+/********************************************************************************************************/
+
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  " "
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+vector<pair<ll,ll> > adj[502];
+void solve()
+{
+	ll n,m,a,b,w;
+	cin>>n>>m;
+	while(m--){
+		cin>>a>>b>>w;
+		adj[a].push_back({b,w});
+        adj[b].push_back({a,w});
+	}
+    priority_queue<pair<ll,ll>, vector<pair<ll,ll> >,greater<pair<ll,ll> > > que;
+    vector<ll> dist(n+1,10000007);
+    que.push({0,1});
+    dist[1] = 0;
+    while(!que.empty()){
+    	int curr = que.top().second;
+    	int curr_distance = que.top().first;
+    	que.pop();
+    	for(auto child : adj[curr]){
+    		if(curr_distance + child.second < dist[child.first]){
+    			dist[child.first] = curr_distance + child.second;
+    			que.push({dist[child.first],child.first});
+    		}
+    	}
+    }
+    for(int i=1;i<=n;i++){
+    	cout<<dist[i]<<" ";
+    }
+    cout<<endl;
+}
+int main()
+{
+    fast();
+    rf();
+
+    //solve();
+    khela_shuru
+    khela_sesh
+}
+    
+/**/
