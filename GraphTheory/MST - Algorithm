@@ -1,0 +1,152 @@
+/********************************************************************************************************\__
+ 
+        author  : Mohammad Rahatul Islam   ||    email   :    rahatuljp2018@gmail.com                              ||
+        Dept. of CSE, IIUC , Bangladesh.                                                    ||
+                                                                                                          ||
+/********************************************************************************************************/
+
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  " "
+#define case(tc) cout << "Case " << tc <<": "
+ll casenum = 1;
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+void solve()
+{
+	ll c = 0;
+	vector<pair<ll,ll> > graph[502];
+	ll n;
+	cin>>n; 
+	while(1)
+	{
+		ll u,v,w;
+		cin>>u>>v>>w;
+		//cout<<"hello"<<endl;
+		if(u==0 && v==0 && w==0){
+			break;
+		}
+		graph[u].push_back({w,v});
+		graph[v].push_back({w,u});
+	}
+	priority_queue<pair<ll,ll>, vector<pair<ll,ll> >,greater<pair<ll,ll> > > q;
+	ll vis[502];
+	memset(vis,0,sizeof vis);
+	q.push({0,0});
+	ll 	inreasing_order = 0;
+	while(!q.empty())
+	{
+		ll pn = q.top().second;
+		ll pnv = q.top().first;
+		q.pop();
+		if(vis[pn]==1){
+			continue;
+		}
+		vis[pn] = 1;
+		inreasing_order +=pnv;
+		for(ll i=0;i<graph[pn].size();i++){
+			ll curr_node = graph[pn][i].second;
+			ll curr_val = graph[pn][i].first;
+			if(vis[curr_node]==1){
+				continue;
+			}
+			q.push({curr_val,curr_node});
+		}
+	}
+	memset(vis,0,sizeof vis);
+    priority_queue<pair<ll,ll> >  Q;
+	Q.push({0,0});
+	ll 	deceasing_order = 0;
+	while(!Q.empty())
+	{
+		ll pn = Q.top().second;
+		ll pnv = Q.top().first;
+		Q.pop();
+		if(vis[pn]==1){
+			continue;
+		}
+		vis[pn] = 1;
+		deceasing_order +=pnv;
+		for(ll i=0;i<graph[pn].size();i++){
+			ll curr_node = graph[pn][i].second;
+			ll curr_val = graph[pn][i].first;
+			if(vis[curr_node]==1){
+				continue;
+			}
+			Q.push({curr_val,curr_node});
+		}
+	}
+	//cout<<deceasing_order<<sp<<inreasing_order<<endl;
+	case (casenum);
+	//cout << endl;
+	casenum++;
+	ll ans = inreasing_order+deceasing_order;
+	if(ans&1){
+		cout<<ans<<"/"<<2<<endl;
+	}else{
+		cout<<ans/2<<endl;
+	}
+
+}
+int main()
+{
+    fast();
+    rf();
+
+    //solve();
+    khela_shuru
+    khela_sesh
+}
+    
+/**/
+
+// Problem link - https://lightoj.com/problem/civil-and-evil-engineer
+solution link - https://pastebin.com/MyerEzcS
