@@ -65,3 +65,5 @@ void solve()
 		cout<<sub_tree[i]<<sp;
 	}
 }
+problem link CF -   https://codeforces.com/contest/1336/problem/A
+sol -     https://pastebin.com/duvfFNMV
