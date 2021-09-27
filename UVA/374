@@ -1,0 +1,88 @@
+/********************************************************************************************************\__
+ 
+        author  : Mohammad Rahatul Islam   ||    email   :    rahatuljp2018@gmail.com                              ||
+        Dept. of CSE, IIUC , Bangladesh.                                                    ||
+                                                                                                          ||
+/********************************************************************************************************/
+
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define vi vector<int>
+#define vll vector<ll>
+#define vs vector<string>
+#define pll pair<ll,ll>
+#define vp vector<pair<ll,ll>>
+#define pb push_back
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  " "
+#define case(tc) cout << "Case " << tc <<": "
+ll casenum = 1;
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+ll BigMod(ll b, ll p, ll m) {if (p == 0) return 1;ll ans = BigMod(b, p/2, m);ans = ( ans * ans ) % m;if (p % 2 == 1) ans = (ans * b) % m;return ans;}
+void solve()
+{
+    ll a,b,m;
+    while(cin>>a>>b>>m){
+        cout<<BigMod(a,b,m)<<endl;
+    }
+}
+int main()
+{
+    fast();
+    rf();
+    solve();
+    //khela_shuru
+    khela_sesh
+}
+    
+/**/
