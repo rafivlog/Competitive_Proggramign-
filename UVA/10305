@@ -1,0 +1,134 @@
+/********************************************************************************************************\__
+ 
+        author  : Mohammad Rahatul Islam   ||    email   :    rahatuljp2018@gmail.com                              ||
+        Dept. of CSE, IIUC , Bangladesh.                                                    ||
+                                                                                                          ||
+/********************************************************************************************************/
+
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define vi vector<int>
+#define vll vector<ll>
+#define vs vector<string>
+#define pll pair<ll,ll>
+#define vp vector<pair<ll,ll>>
+#define pb push_back
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  ' '
+#define case(tc) cout << "Case " << tc <<": "
+ll casenum = 1;
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+vector<int>adj[10000];
+vector<bool>v;
+vector<int>kk;
+void dfs(int src)
+{
+    v[src]=1;
+    for(int i=0; i<adj[src].size(); i++)
+    {
+        int x=adj[src][i];
+        if(v[x]==0)
+            dfs(x);
+    }
+    kk.pb(src);
+}
+void solve()
+{
+	int nodes, edges;
+    while(1)
+    {
+    	cin>>nodes>>edges;
+    	if(nodes==0 && edges==0){
+    		break;
+    	}
+        v.clear();
+        v.assign(nodes+1,0);
+        kk.clear();
+        for (int i = 0; i < edges; i++)
+        {
+            int u, v;
+            cin >> u >> v;
+            adj[u].pb(v);
+        }
+        for(int i=1; i<=nodes; i++)
+        {
+            if(v[i]==0)
+                dfs(i);
+        }
+        // for(auto el : kk){
+        // 	cout<<el<<sp;
+        // }
+        // cout<<endl;
+        // for(auto el : r){
+        // 	cout<<el<<sp;
+        // }
+        // cout<<endl;
+        for(int i=nodes-1; i>=0; i--)
+        {
+            cout<<kk[i];
+            if(i)
+                cout <<sp;
+        }
+        cout<<endl;
+    }
+}
+int main()
+{
+    fast();
+    rf();
+    solve();
+    //khela_shuru
+    khela_sesh
+}
+    
+/**/
