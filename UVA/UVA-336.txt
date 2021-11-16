@@ -1,0 +1,144 @@
+https://www.toptal.com/developers/hastebin/hoxinunaye.cpp
+
+//***********************Bismillah-ir-Rahman-ir-Rahim******************************\
+//In the Name of Allah
+//La ilaha illallah Muhammadur Rasulullah
+//Rabbir Hamhuma Kama Rabba Yani Sagheera
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define vi vector<int>
+#define vll vector<ll>
+#define vs vector<string>
+#define pll pair<ll,ll>
+#define vp vector<pair<ll,ll>>
+#define pb push_back
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  " "
+#define case(tc) cout << "Case " << tc <<": "
+ll casenum = 1;
+int dx[] = {-1,0,1,0}; // U R D L
+int dy[] = {0,1,0,-1};
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+int vis[1000001];
+int dist[1000001];
+void BFS(int src,int d, map<int, vi> adj)
+{
+    memset(vis,-1,sizeof(vis));
+    int c = 1;
+    queue<int>q;
+    q.push(src);
+    vis[src] = 1;
+    memset(dist,-1,sizeof(dist));
+    dist[src] = 0;
+    while(!q.empty())
+    {
+        int curr = q.front();
+        q.pop();
+        for(int child : adj[curr])
+        {
+            if(vis[child]==-1)
+            {
+                dist[child] = dist[curr]+1;
+                q.push(child);
+                vis[child] = 1;
+                if(dist[child]<=d){
+                    c++;
+                }
+            }
+        }
+    }
+    case(casenum);
+    casenum++;
+    cout <<len(adj) - c << " nodes not reachable from node " << src << " with TTL = " << d << "."<<endl;
+}
+
+
+void solve(int n)
+{
+    map<int, vi> adj;
+    int x,y;
+    for(int i=0;i<n;i++){
+        cin>>x>>y;
+        adj[x].push_back(y);
+        adj[y].push_back(x);
+    }
+    while(1)
+    {
+        int s,d;
+        cin>>s>>d;
+        if(s==0 && s==0){
+            break;
+        }
+        // for(int i=0;i<=n;i++){
+        //     vis[i] = 0;
+        // }
+        BFS(s,d,adj);
+    }
+}
+int main()
+{
+    fast();
+    rf();
+    //solve();
+    //khela_shuru
+    int kk;
+    while(1)
+    {
+        cin>>kk;
+        if(kk==0){
+            break;
+        }
+        solve(kk);
+    }
+    khela_sesh
+}
