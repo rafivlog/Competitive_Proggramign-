@@ -1,0 +1,154 @@
+//***********************Bismillah-ir-Rahman-ir-Rahim******************************\
+//In the Name of Allah
+//La ilaha illallah Muhammadur Rasulullah
+//Rabbir Hamhuma Kama Rabba Yani Sagheera
+
+#include <stdio.h>
+#include <math.h>
+#include <stdlib.h>
+#include <string.h>
+#include <stack>
+#include <queue>
+#include <vector>
+#include <utility>
+#include <string>
+#include <sstream>
+#include <iostream>
+#include <set>
+#include <map>
+#include <algorithm>
+#include <memory.h>
+#include <functional>
+#include <numeric>
+
+using namespace std;
+
+#define Cnt1(n) (__builtin_popcount(n))//  Count of 1s in binary 
+#define Cntt1(n) (__builtin_popcountll(n))
+#define cb(n) (32 - __builtin_clz(n))//    Count of leading zeros before 1
+#define cbb(n) (64 - __builtin_clzll(n)//  long long data types
+#define cbbb(n) (__builtin_ctz(n))//       Count of zeros from last to first 
+#define bp(n)  (_builtin_parity(n))//      even_parity(0)_&_odd_parity(1) 
+#define PI 2*acos(0.0)
+#define MAX3(a,b,c) max(a,max(b,c))
+#define MIN3(a,b,c) min(a,min(b,c))
+#define MOD   1000000007
+#define all(x) x.begin(),x.end()
+#define len(x) (int)x.size()
+#define vi vector<int>
+#define vll vector<ll>
+#define vs vector<string>
+#define pll pair<ll,ll>
+#define vp vector<pair<ll,ll>>
+#define pb push_back
+#define ff first
+#define ss second
+#define ull unsigned long long int
+#define ll long long
+#define khela_shuru int t;cin>>t;while(t--){solve();}
+#define khela_sesh return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+#define sp  " "
+#define case(tc) cout << "Case " << tc <<": "
+ll casenum = 1;
+int dx[] = {-1,0,1,0}; // U R D L
+int dy[] = {0,1,0,-1};
+void rf()
+{
+    #ifndef ONLINE_JUDGE
+    freopen("input.txt", "r", stdin);
+    freopen("output.txt", "w", stdout);
+    #endif
+}
+void fast()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+
+const int INT_MAX = 1000000009;
+
+void solve()
+{
+    int n, m, u, v, w;
+    cin >> n >> m;
+    int G[n + 5][n + 5], par[n + 5][n + 5];
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= n; j++) {
+            if (i == j) G[i][j] = 0;
+            else G[i][j] = INT_MAX;
+        }
+    }
+    for (int i = 0; i < m; ++i)
+    {
+        cin >> u >> v >> w;
+        G[u][v] = w;
+    }
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= n; j++) {
+            if (i == j || G[i][j] == INT_MAX)
+                par[i][j] = INT_MAX;
+            else par[i][j] = i;
+        }
+    }
+
+    for (int k = 1; k <= n; ++k) {
+        for (int i = 1; i <= n; ++i) {
+            for (int j = 0; j <= n; ++j) {
+                if (G[i][k] + G[k][j] < G[i][j]) {
+                    G[i][j] = G[i][k] + G[k][j];
+                    par[i][j] = par[k][j];
+                }
+            }
+        }
+    }
+    for (int i = 1; i <= n; ++i) {
+        for (int j = 1; j <= n; j++) {
+            if (G[i][j] == INT_MAX) cout << "INF ";
+            else cout << G[i][j] << ' ';
+        }
+        cout << endl;
+    }
+    cout << endl << endl;
+
+    /// If the path is given,then  the path will print... s Start r End
+    // int s, r;
+    // cin >> s >> r;
+    // vector<int> Path;
+    // while (par[s][r] != INF) {
+    //     Path.push_back(par[s][r]);
+    //     r = par[s][r];
+    // }
+    // reverse(Path.begin(), Path.end());
+    // for (int i = 0; i < Path.size(); i++)
+    //     cout << Path[i] << endl;
+}
+int main()
+{
+    fast();
+    rf();
+    solve();
+    //khela_shuru
+    khela_sesh
+}
+
+/*
+
+---->>> input
+4 7
+1 2 9
+2 1 6
+1 3 -4
+3 2 5
+4 3 1
+2 4 2
+
+---->>> output
+0 1 -4 3 
+6 0 2 2 
+11 5 0 7 
+12 6 1 0 
+
+*/
