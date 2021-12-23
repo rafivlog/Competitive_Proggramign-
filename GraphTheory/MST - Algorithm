@@ -147,5 +147,59 @@ int main()
     
 /**/
 
+#include<bits/stdc++.h>
+using namespace std;
+void iofun();
+
+int find(int r , int parent[])
+{
+	return parent[r] == r ? r : find(parent[r], parent);
+}
+
+void kruskal(int n, vector<pair<int, pair<int, int>>> edge)
+{
+	int parent[n + 5];
+	for (int i = 0; i <= n; ++i)
+		parent[i] = i;
+	sort(edge.begin(), edge.end());
+	int cost = 0;
+	for (int i = 0; i < edge.size(); ++i)
+	{
+		int u = edge[i].second.first;
+		int v = edge[i].second.second;
+		if (find(u, parent) != find(v, parent))
+		{
+			cost += edge[i].first;
+			parent[find(v, parent)] = find(u, parent);
+		}
+	}
+
+	cout << cost << endl;
+}
+
+int main()
+{
+	iofun();
+	vector<pair<int, pair<int, int>>> edge;
+	int n, m;
+	cin >> n >> m;
+	for (int i = 0; i < m; ++i)
+	{
+		int u, v, w;
+		cin >> u >> v >> w;
+		edge.push_back({w, {u, v}});
+	}
+	kruskal(n, edge);
+	return 0;
+}
+
+void iofun() {
+#ifndef ONLINE_JUDGE
+	freopen("input.txt", "r", stdin);
+	freopen("output.txt", "w", stdout);
+#endif
+}
+
+
 // Problem link - https://lightoj.com/problem/civil-and-evil-engineer
 solution link - https://pastebin.com/MyerEzcS
