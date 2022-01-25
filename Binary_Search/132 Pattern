@@ -22,3 +22,16 @@ public:
     return false;
     }
 };
+
+
+
+
+/*
+
+for(int j=n-1;j>=0;j--)
+    while(st.size()>0 && st.peek() <=min[j]) st.pop();
+    if(st.size()>0 && st.peek()<nums[j)
+         found,break;
+    st.push(nums[j);
+    
+*/
