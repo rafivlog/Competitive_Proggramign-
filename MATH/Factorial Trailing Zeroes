@@ -1,0 +1,11 @@
+class Solution {
+public:
+    int trailingZeroes(int n) {
+        int tmp = 5,sum = 0;
+        while(n/tmp > 0){
+        sum += n/tmp;
+        tmp *= 5;
+        }
+    return sum;
+    }
+};
