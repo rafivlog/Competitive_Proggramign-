@@ -1,0 +1,22 @@
+class Solution {
+public:
+    void rotate(vector<int>& nums, int k) {
+        int n=nums.size(),l=0;
+        k=k%nums.size();
+        cout<<k<<endl;
+        reverse(nums.begin(),nums.begin()+n-k);
+       //or(auto el :nums){
+       //   cout<<el<<" ";
+       //
+        //ut<<endl;
+        reverse(nums.end()-k,nums.end());
+        //r(auto el :nums){
+        //  cout<<el<<" ";
+        //
+        //-;
+        /*ile(l<n){
+            swap(nums[l++],nums[n--]);
+        }*/
+        reverse(nums.begin(),nums.end());
+    }
+};
