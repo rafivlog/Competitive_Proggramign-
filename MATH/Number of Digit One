@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int countDigitOne(int n) {
+        int ans = 0;
+        for (long i = 1, j; i <= n; i = j) {
+            j = i * 10;
+            //cout<<"j = "<<j<<endl;
+            ans += n / j * i;
+            //cout<<"ANS = "<<ans<<endl;
+           ans += max(min((n % j) - i + 1, i), 0l);
+            //cout<<"ans = "<<ans<<endl<<endl;
+        }
+        return ans;
+    }
+};
