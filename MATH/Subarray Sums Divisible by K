@@ -1,0 +1,15 @@
+class Solution {
+public:
+    int subarraysDivByK(vector<int>& A, int K) {
+        map<int,int> map;
+        map[0] = 1;
+        int count = 0, sum = 0;
+        for (int a : A) {
+            sum = (sum + a) % K;
+            if (sum < 0) sum += K;
+            count += map[sum];
+            map[sum]++;
+        }
+        return count;
+    }
+};
