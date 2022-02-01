@@ -6,7 +6,7 @@ public:
            mp[0]=1;
            for(auto el : nums){
                sum+=el;
-               if(mp.find(sum-k) != mp.end()){
+               if(mp[sum-k]){
                    count+=mp[sum-k];
                }
                mp[sum]++;
