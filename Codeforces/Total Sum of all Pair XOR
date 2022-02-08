@@ -1,0 +1,50 @@
+/// Bismillahir Rahmaneer Raheem
+ #include<bits/stdc++.h>
+
+ using namespace std;
+
+ #define all(x) x.begin(),x.end()
+ #define ull unsigned long long int
+ #define ll long long
+ #define zinga_lala int t;cin>>t;while(t--){cp();}
+ #define code_sesh_yoo return 0;
+ #define yes cout<<"YES"<<endl;
+ #define no  cout<<"NO"<<endl;
+ void speed()
+ {
+     ios_base::sync_with_stdio(false);
+     cin.tie(NULL);
+     cout.tie(NULL);
+ }
+ void cp()
+ {
+     int n,result=0;
+     cin>>n;
+     vector<int> a(n);
+     for(int i=1;i<=n;i++)
+        cin>>a[i];
+     for(int i=0;i<31;i++){
+        int zero=0,one=0;
+        for(int j=1;j<=n;j++){
+            if(a[j]&(i<<i)){
+                one++;
+            }
+            else{
+                zero++;
+            }
+        }
+        int pairs = one*zero;
+        result+=(1<<i)*pairs;
+     }
+     cout<<result<<endl;
+ }
+ int main()
+ {
+     speed();
+     cp();
+     //zinga_lala
+     code_sesh_yoo
+ }
+
+ /**/
+
