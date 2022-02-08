@@ -1,0 +1,17 @@
+class Solution {
+public:
+    int singleNumber(vector<int>& nums) {
+        map<int,int> mp;
+        for(auto el : nums){
+            mp[el]++;
+        }
+        int ans;
+        for(auto el : mp){
+            if(el.second==1){
+                ans =  el.first;
+                break;
+            }
+        }
+        return ans;
+    }
+};
