@@ -1,0 +1,41 @@
+/// Bismillahir Rahmaneer Raheem
+ #include<bits/stdc++.h>
+
+ using namespace std;
+
+ #define all(x) x.begin(),x.end()
+ #define ull unsigned long long int
+ #define ll long long
+ #define zinga_lala int t;cin>>t;while(t--){cp();}
+ #define code_sesh_yoo return 0;
+ #define yes cout<<"YES"<<endl;
+ #define no  cout<<"NO"<<endl;
+ void speed()
+ {
+     ios_base::sync_with_stdio(false);
+     cin.tie(NULL);
+     cout.tie(NULL);
+ }
+ void cp()
+ {
+   int l,r;
+   cin>>l>>r;
+   int x = l^r;
+   int ans=0,i=0;
+   while(x){
+    ans+=(1<<i);
+    x=x>>1;
+    i++;
+   }
+   cout<<ans<<endl;
+ }
+ int main()
+ {
+     speed();
+     cp();
+     //zinga_lala
+     code_sesh_yoo
+ }
+
+ /**/
+
