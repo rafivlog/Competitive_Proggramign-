@@ -1,0 +1,52 @@
+/// Bismillahir Rahmaneer Raheem
+ #include<bits/stdc++.h>
+
+ using namespace std;
+
+ #define all(x) x.begin(),x.end()
+ #define ull unsigned long long int
+ #define ll long long
+ #define zinga_lala int t;cin>>t;while(t--){cp();}
+ #define code_sesh_yoo return 0;
+ #define yes cout<<"YES"<<endl;
+ #define no  cout<<"NO"<<endl;
+ void speed()
+ {
+     ios_base::sync_with_stdio(false);
+     cin.tie(NULL);
+     cout.tie(NULL);
+ }
+ int findmsb(ll n)
+ {
+     ll f = 1;
+     for(int i=55;i>=0;i--){
+        if(n & (f<<i))
+            return i;
+     }
+     return 0;
+ }
+ void cp()
+ {
+     ll n;
+     cin>>n;
+     int msb = findmsb(n);
+     //cout<<msb<<endl;
+     ll c=0,ans=0;
+     for(int i=0;i<msb;i++){
+        ll f = 1,k=1;
+        if((n & (f<<i))==0){
+            c+=(k<<i);
+        }
+     }
+     cout<<c<<endl;
+ }
+ int main()
+ {
+     speed();
+     //cp();
+     zinga_lala
+     code_sesh_yoo
+ }
+
+ /**/
+
