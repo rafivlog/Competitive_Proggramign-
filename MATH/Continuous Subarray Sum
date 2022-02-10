@@ -1,0 +1,21 @@
+class Solution {
+public:
+    bool checkSubarraySum(vector<int>& nums, int k) {
+        map<int, int> mp;
+        int sum = 0;
+        
+        for(auto it: nums){
+            int temp = sum;
+            sum += it;
+            if(mp[sum%k]>=1){
+                //cout<<sum<<endl;
+                return true;                              
+            }
+            
+            mp[temp%k]++;
+        }
+       
+        
+        return false;
+    }
+};
