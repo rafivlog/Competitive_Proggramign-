@@ -1,0 +1,13 @@
+class Solution {
+public:
+    int kthGrammar(int n, int K) {
+        K--;
+        int cnt = 0;
+        while (K) {
+            //cout<<K<<endl;
+            cnt += K&1;
+            K >>= 1;
+        }
+        return cnt%2;
+    }
+};
