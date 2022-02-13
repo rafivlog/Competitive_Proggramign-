@@ -52,3 +52,18 @@ int main()
 }
 
 /**/
+
+
+------------->
+int Count(int n, int k) {
+    int p = 1<<k;
+    long long ans = (n/(2*p))*p;
+    n%=2*p;
+ 
+    if (n < p)  return ans;
+    else        return ans+n-p+1;
+}
+for (int j=0; j<20; j++) {
+            int ones = Count(r, j) - Count(l-1, j);
+            ans = min(ans, n-ones);
+}
