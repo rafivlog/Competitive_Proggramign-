@@ -1,0 +1,59 @@
+///Bismillahir Rahmanir Rahim
+#include<bits/stdc++.h>
+
+using namespace std;
+
+#define all(x) x.begin(),x.end()
+#define ull unsigned long long int
+#define ll long long
+#define vi vector<int>
+#define show(a) for(auto el:a)cout<<el<<" ";cout<<endl;
+#define zinga_lala int t;cin>>t;while(t--){cp();}
+#define code_sesh_yoo return 0;
+#define yes cout<<"YES"<<endl;
+#define no  cout<<"NO"<<endl;
+void speed()
+{
+    ios_base::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
+}
+void cp()
+{
+    int n;cin>>n;vi a(n);
+    for(int i=0;i<n;i++){
+        cin>>a[i];
+    }
+    vi one_bit_count(33);
+    for(int i=0;i<32;i++){
+        for(int j=0;j<n;j++){
+            if(a[j]&(1<<i)){
+                one_bit_count[i]++;
+            }
+        }
+    }
+    vi ans;
+    for(int i=1;i<n+1;i++){
+        bool flag = false;
+        for(int j=0;j<32;j++){
+            if(one_bit_count[j]%i != 0){
+                flag = true;
+                break;
+            }
+        }
+        if(!flag){
+            ans.push_back(i);
+        }
+    }
+    sort(all(ans));
+    show(ans);
+}
+int main()
+{
+    speed();
+    zinga_lala
+    code_sesh_yoo
+}
+
+/**/
+ 
